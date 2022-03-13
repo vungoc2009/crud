@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springFramwork.org/schema/data/jaxb">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+   <link type="text/css" rel="stylesheet" href="bootstrap.min.css" th:href="@{bootstrap.min.css}"/> 
+<title>Employee List</title>
+</head>
+<body>
+	<div class="col-3"></div>
+	<div class="container col-6">
+		<h1>Employee List</h1>
+		<table class="table table_active">
+			<tr>
+				<td>fitsr_name</td>
+				<td>last_name</td>
+				<td>email</td>
+			</tr>
+			<tr th:each="employee : ${employees}">
+				<td th:text = "${employee.first_name}"></td>
+				<td th:text = "${employee.last_name}"></td>
+				<td th:text = "${employee.email}"></td>
+				<td>
+					<a th:href="@{/edit?id={id}(id=${employee.id})}" class="btn btn-danger">Edit</a>  
+					<a th:href="@{/delete?id={id}(id=${employee.id})}" class="btn btn-danger">Delete</a>  
+				</td>
+			</tr>
+		</table>
+		<a th:href="@{/add}" class="btn btn-success">Add Employee</a>
+	</div>
+</body>
+</html>
